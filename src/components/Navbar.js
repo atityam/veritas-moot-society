@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  // Toggle function for mobile users who can't "hover"
+  const toggleDropdown = () => setIsOpen(!isOpen);
+
   return (
     <nav className="navbar">
       <div className="nav-brand">
@@ -13,10 +16,17 @@ const Navbar = () => {
       <div className="nav-links">
         <Link to="/">HOME</Link>
         <Link to="/about">ABOUT</Link>
-        <Link to="/resources">MOOT PROBLEM/RULES/SCHEDULE</Link>
+        <Link to="/resources">RESOURCES</Link>
         
-        <div className="dropdown" onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)}>
-          <span className="drop-trigger">GALLERY ▾</span>
+        <div 
+          className="dropdown" 
+          onMouseEnter={() => setIsOpen(true)} 
+          onMouseLeave={() => setIsOpen(false)}
+          onClick={toggleDropdown}
+        >
+          <span className="drop-trigger" style={{ cursor: 'pointer' }}>
+            GALLERY {isOpen ? '▴' : '▾'}
+          </span>
           {isOpen && (
             <div className="dropdown-content">
               <Link to="/gallery/2025">Gallery 2025</Link>
@@ -32,4 +42,5 @@ const Navbar = () => {
     </nav>
   );
 };
+
 export default Navbar;

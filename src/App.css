@@ -454,3 +454,112 @@ input, textarea {
   border-color: var(--gold);
   color: var(--dark);             /* Dark text for contrast against gold */
 }
+
+/* ... [Keep all your existing CSS above as is] ... */
+
+/* --- Navbar Registration Button Styling --- */
+.nav-reg-btn {
+  background-color: var(--maroon);
+  color: white !important;
+  padding: 8px 15px;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+.nav-reg-btn:hover {
+  background-color: var(--dark);
+}
+
+/* --- MOBILE RESPONSIVENESS (Main Fixes) --- */
+
+@media (max-width: 992px) {
+  .navbar {
+    padding: 15px 10px;
+  }
+  
+  .nav-brand {
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+
+  .nav-brand img {
+    height: 50px; /* Smaller logo for mobile */
+  }
+
+  .nav-brand h1 {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  .nav-links {
+    flex-wrap: wrap; /* Allows links to wrap to multiple lines */
+    justify-content: center;
+    gap: 15px;
+    padding: 15px 20px;
+    width: 90%;
+  }
+
+  .nav-links a, .drop-trigger {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+    padding: 40px 0;
+  }
+
+  /* Force all grids to 1 column */
+  .grid-2, .grid-3, .contact-layout {
+    grid-template-columns: 1fr !important;
+    gap: 15px;
+  }
+
+  /* Force side-by-side to stack */
+  .side-by-side {
+    flex-direction: column !important;
+    align-items: center;
+  }
+
+  .text-area, .image-area {
+    width: 100% !important;
+    padding: 0;
+  }
+
+  .image-area img {
+    margin-top: 20px;
+    padding-top: 0;
+  }
+
+  .page-header {
+    height: 250px;
+  }
+
+  .page-header h2 {
+    font-size: 2.2rem;
+  }
+
+  .form-card {
+    padding: 20px;
+  }
+
+  /* Fixes registration member boxes */
+  .member-form-box {
+    padding: 15px !important;
+  }
+
+  .captcha-box {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .footer-social-list a {
+    justify-content: center;
+  }
+}
