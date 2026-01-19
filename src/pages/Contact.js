@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const Contact = () => {
   const [loading, setLoading] = useState(false);
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz_pvTAFbow9uZJwFZCchoAIQyb6BjxQhO8x89s0D80c8oMG2OvBJDQickNKci8Ji8-/exec"; 
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwnwL5T0CTWlaY1wXlDrjluWydZwRZCPeHu5iDQZfHW-op81vDqQWFhzn0_lDj9-hHU/exec"; 
 
   const headerStyle = {
     backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/assets/page-header.jpg')`
@@ -64,7 +64,7 @@ const Contact = () => {
           <div className="contact-info-card">
             <h3>Office Address</h3>
             <p>📍 CDGI Campus, Khandwa Road, Indore (452020)</p>
-            <p>📞 +91 8860082205</p>
+            <p>📠 07314243620 </p>
             <p>✉️ veritasmootingsociety@gmail.com</p>
           </div>
         </div>

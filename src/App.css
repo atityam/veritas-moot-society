@@ -28,7 +28,7 @@ body {
 /* --- Navbar: Centered Logo & Brand --- */
 .navbar {
   background: var(--white);
-  padding: 15px 0; /* Reduced vertical padding */
+  padding: 15px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,20 +41,48 @@ body {
 .nav-brand {
   display: flex;
   align-items: center;
-  gap: 12px; /* REDUCED GAP between logo and title */
+  gap: 12px;
   margin-bottom: 15px;
-  position: relative;
+  position: relative; /* CRITICAL: Allows absolute positioning of side logos */
   width: 100%;
   justify-content: center;
 }
 
-.nav-brand img { height: 70px; } /* Slightly smaller logo for better fit */
+/* SIDE LOGO STYLING */
+.side-logo-left, .side-logo-right {
+  position: absolute;
+  height: 65px; /* Adjust size as needed */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.side-logo-left {
+  left: 20px;
+}
+
+.side-logo-right {
+  right: 20px;
+}
+
+/* HIDE SIDE LOGOS ON SMALLER SCREENS */
+@media (max-width: 1100px) {
+  .side-logo-left, .side-logo-right {
+    display: none; /* or visibility: hidden; */
+  }
+}
+
+.nav-brand img:not(.side-logo-left):not(.side-logo-right) { 
+  height: 70px; 
+}
+
 .nav-brand h1 { 
   color: var(--maroon); 
   margin: 0; 
-  font-size: 1.8rem; /* REDUCED TEXT SIZE from 2.2rem */
+  font-size: 1.8rem;
   font-weight: bold;
 }
+
+/* ... Keep all your existing Hamburger, nav-links, and dropdown CSS below ... */
 
 /* HAMBURGER ICON STYLING */
 .hamburger {

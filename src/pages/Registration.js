@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const Registration = () => {
   const [loading, setLoading] = useState(false);
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz_pvTAFbow9uZJwFZCchoAIQyb6BjxQhO8x89s0D80c8oMG2OvBJDQickNKci8Ji8-/exec"; 
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwnwL5T0CTWlaY1wXlDrjluWydZwRZCPeHu5iDQZfHW-op81vDqQWFhzn0_lDj9-hHU/exec"; 
 
   const headerStyle = {
     backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/assets/page-header.jpg')`

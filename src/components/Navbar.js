@@ -2,12 +2,17 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false); // Dropdown state
-  const [isMobileMenu, setIsMobileMenu] = useState(false); // Hamburger state
+  const [isOpen, setIsOpen] = useState(false);
+  const [isMobileMenu, setIsMobileMenu] = useState(false);
 
   return (
     <nav className="navbar">
       <div className="nav-brand">
+        {/* NEW SIDE LOGOS */}
+        <img src="/assets/cdgi-logo.jpeg" alt="CDGI Logo" className="side-logo-left" />
+        <img src="/assets/cdil-logo.jpeg" alt="CDIL Logo" className="side-logo-right" />
+
+        {/* CENTER LOGO AND TITLE */}
         <img src="/assets/logo.png" alt="Veritas Logo" />
         <h1>VERITAS MOOTING SOCIETY</h1>
         
