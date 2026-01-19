@@ -15,6 +15,7 @@ body {
   line-height: 1.8;
   color: var(--dark);
   background-color: var(--white);
+  overflow-x: hidden;
 }
 
 .container {
@@ -27,34 +28,52 @@ body {
 /* --- Navbar: Centered Logo & Brand --- */
 .navbar {
   background: var(--white);
-  padding: 20px 0;
+  padding: 15px 0; /* Reduced vertical padding */
   display: flex;
   flex-direction: column;
   align-items: center;
   border-bottom: 5px solid var(--maroon);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .nav-brand {
   display: flex;
   align-items: center;
-  gap: 20px;
-  margin-bottom: 20px;
+  gap: 12px; /* REDUCED GAP between logo and title */
+  margin-bottom: 15px;
+  position: relative;
+  width: 100%;
+  justify-content: center;
 }
 
-.nav-brand img { height: 80px; }
+.nav-brand img { height: 70px; } /* Slightly smaller logo for better fit */
 .nav-brand h1 { 
   color: var(--maroon); 
   margin: 0; 
-  font-size: 2.2rem; 
+  font-size: 1.8rem; /* REDUCED TEXT SIZE from 2.2rem */
   font-weight: bold;
+}
+
+/* HAMBURGER ICON STYLING */
+.hamburger {
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: var(--maroon);
+  cursor: pointer;
+  position: absolute;
+  right: 15px;
 }
 
 .nav-links {
   display: flex;
-  gap: 30px;
+  gap: 25px;
   align-items: center;
   background: var(--gold);
-  padding: 12px 40px;
+  padding: 10px 35px;
   border-radius: 4px;
 }
 
@@ -62,12 +81,20 @@ body {
   text-decoration: none;
   color: var(--dark);
   font-weight: bold;
-  font-size: 15px;
+  font-size: 14px;
   text-transform: uppercase;
   transition: 0.3s;
+  white-space: nowrap;
 }
 
 .nav-links a:hover { color: var(--maroon); }
+
+.nav-reg-btn {
+  background-color: var(--maroon);
+  color: white !important;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
 
 /* --- Dropdown Logic --- */
 .dropdown { position: relative; }
@@ -82,13 +109,9 @@ body {
   flex-direction: column;
   z-index: 100;
 }
-.dropdown-content a { 
-  padding: 12px; 
-  border-bottom: 1px solid #eee; 
-  text-transform: none; 
-}
+.dropdown-content a { padding: 12px; border-bottom: 1px solid #eee; text-transform: none; }
 
-/* --- Dynamic Page Header (Universal) --- */
+/* --- Dynamic Page Header --- */
 .page-header {
   height: 350px;
   width: 100%;
@@ -102,464 +125,85 @@ body {
   text-align: center;
 }
 
-.page-header h2 { 
-  font-size: 3.5rem; 
-  margin: 0; 
-  letter-spacing: 2px;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-}
+.page-header h2 { font-size: 3.5rem; margin: 0; letter-spacing: 2px; text-shadow: 2px 2px 4px rgba(0,0,0,0.7); }
+.breadcrumb { font-size: 1.1rem; color: var(--gold); margin-top: 10px; font-weight: bold; text-transform: uppercase; }
 
-.breadcrumb { 
-  font-size: 1.1rem; 
-  color: var(--gold); 
-  margin-top: 10px; 
-  font-weight: bold;
-  text-transform: uppercase;
-}
+/* --- Hero Animation --- */
+.home-hero { height: 550px; overflow: hidden; position: relative; }
+.home-hero img { width: 100%; height: 100%; object-fit: cover; animation: zoomInOut 20s infinite alternate; }
+@keyframes zoomInOut { from { transform: scale(1); } to { transform: scale(1.15); } }
 
-/* --- Home Hero Animation --- */
-.home-hero {
-  height: 550px;
-  overflow: hidden;
-  position: relative;
-}
+/* --- Side-by-Side --- */
+.side-by-side { display: flex; gap: 30px; align-items: flex-start; margin: 10px 0; }
+.text-area, .image-area { flex: 1; width: 50%; }
+.text-area { font-size: 1.1rem; text-align: justify; padding-right: 10px; }
+.image-area img { width: 100%; height: auto; border: 8px solid var(--gold); box-shadow: 15px 15px 0px var(--maroon); display: block; margin-top: 40px; }
 
-.home-hero img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  animation: zoomInOut 20s infinite alternate;
-}
-
-@keyframes zoomInOut {
-  from { transform: scale(1); }
-  to { transform: scale(1.15); }
-}
-
-/* --- Side-by-Side Layout (Home/About) --- */
-/* --- Side-by-Side Equal Layout --- */
-.side-by-side {
-  display: flex;
-  gap: 30px;           /* Space between text and image */
-  align-items: flex-start; /* Aligns text to the top of the image */
-  margin: 10px 0;
-}
-
-.text-area, .image-area {
-  flex: 1;            /* This makes both sides exactly equal (50% each) */
-  width: 50%;         /* Reinforces the equal width */
-}
-
-.text-area {
-  font-size: 1.1rem;
-  text-align: justify;
-  padding-right: 10px;
-}
-
-.image-area img {
-  width: 100%;        /* Image fills its 50% container */
-  height: auto;
-  border: 8px solid var(--gold);
-  box-shadow: 15px 15px 0px var(--maroon);
-  display: block;
-  padding-top: 40px;
-  margin-top: 40px;
-}
-
-/* Responsive: Stack them on mobile devices */
-@media (max-width: 992px) {
-  .side-by-side {
-    flex-direction: column;
-  }
-  .text-area, .image-area {
-    width: 100%;
-  }
-}
 /* --- Resources & Winners UI --- */
-.resource-section-box {
-  background: #fdfdfd;
-  border: 1px solid #eee;
-  padding: 30px;
-  margin-bottom: 40px;
-  border-left: 8px solid var(--maroon);
-}
-
-.resource-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.winner-row-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: var(--light-bg);
-  padding: 30px;
-  border-left: 10px solid var(--maroon);
-  margin-bottom: 25px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-}
-
-.winner-info h3 { margin: 0 0 10px 0; color: var(--maroon); }
-
-.view-btn {
-  background: var(--maroon);
-  color: white;
-  padding: 12px 25px;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 4px;
-  transition: 0.3s;
-  display: inline-block;
-}
-
-.view-btn:hover { background: var(--gold); color: var(--dark); }
+.resource-section-box { background: #fdfdfd; border: 1px solid #eee; padding: 30px; margin-bottom: 40px; border-left: 8px solid var(--maroon); }
+.resource-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 20px; }
+.winner-row-item { display: flex; justify-content: space-between; align-items: center; background: var(--light-bg); padding: 30px; border-left: 10px solid var(--maroon); margin-bottom: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+.view-btn { background: var(--maroon); color: white; padding: 12px 25px; text-decoration: none; font-weight: bold; border-radius: 4px; transition: 0.3s; display: inline-block; }
 
 /* --- Forms & Registration --- */
-.form-card {
-  background: var(--light-bg);
-  padding: 40px;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
+.form-card { background: var(--light-bg); padding: 40px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+.form-card h3 { background: var(--maroon); color: white; padding: 12px 20px; font-size: 1.3rem; margin: 30px 0 20px 0; }
+.submit-btn { background-color: var(--maroon); color: var(--white); border: 2px solid var(--maroon); padding: 18px 40px; font-size: 18px; font-weight: bold; text-transform: uppercase; cursor: pointer; width: 100%; transition: all 0.3s ease; margin-top: 30px; display: block; }
+.submit-btn:hover { background-color: var(--gold); border-color: var(--gold); color: var(--dark); }
+.captcha-box { display: flex; align-items: center; gap: 15px; background: #f0f0f0; padding: 15px; border: 1px dashed var(--maroon); width: fit-content; margin: 25px 0; }
+.captcha-box input { width: 90px !important; margin: 0 !important; padding: 8px; }
 
-.form-card h3 {
-  background: var(--maroon);
-  color: white;
-  padding: 12px 20px;
-  font-size: 1.3rem;
-  margin: 30px 0 20px 0;
-}
-
-.captcha-box {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  background: #f0f0f0;
-  padding: 15px;
-  border: 1px dashed var(--maroon);
-  width: fit-content;
-  margin: 25px 0;
-}
-
-.captcha-box input {
-  width: 90px !important;
-  margin: 0 !important;
-  padding: 8px;
-}
-
-/* --- Contact Section --- */
-.contact-layout {
-  display: grid;
-  grid-template-columns: 2fr 1.2fr;
-  box-shadow: 0 0 30px rgba(0,0,0,0.1);
-  background: #fff;
-}
-
+/* --- Contact --- */
+.contact-layout { display: grid; grid-template-columns: 2fr 1.2fr; box-shadow: 0 0 30px rgba(0,0,0,0.1); background: #fff; }
 .contact-form { padding: 50px; }
-.contact-info-card { 
-  background: #000; 
-  color: white; 
-  padding: 50px; 
-  display: flex; 
-  flex-direction: column; 
-  gap: 25px;
-}
-
+.contact-info-card { background: #000; color: white; padding: 50px; display: flex; flex-direction: column; gap: 25px; }
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.full-width { grid-column: span 2; }
-
-input, textarea {
-  padding: 15px;
-  border: 1px solid #ddd;
-  background: #f9f9f9;
-  font-size: 16px;
-  font-family: inherit;
-}
-
-.send-btn {
-  background: #000;
-  color: white;
-  border: 2px solid #000;
-  padding: 15px 40px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 20px;
-  transition: 0.3s;
-}
-
-.send-btn:hover { background: var(--maroon); border-color: var(--maroon); }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+input, textarea { padding: 15px; border: 1px solid #ddd; background: #f9f9f9; font-size: 16px; width: 100%; box-sizing: border-box; }
+.send-btn { background: #000; color: white; border: 2px solid #000; padding: 15px 40px; font-weight: bold; cursor: pointer; margin-top: 20px; transition: 0.3s; }
 
 /* --- Footer --- */
-/* --- Enhanced Footer Styling --- */
-/* --- Final Consolidated Footer Styling --- */
-.footer-main {
-  background-color: #000;
-  color: #ffffff;
-  padding: 80px 0 30px;
-  margin-top: 100px;
-  border-top: 3px solid var(--gold);
-  position: relative; /* Ensures it stays in the layout flow */
-  z-index: 10;
-}
+.footer-main { background-color: #000; color: #ffffff; padding: 80px 0 30px; margin-top: 100px; border-top: 3px solid var(--gold); position: relative; z-index: 10; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 50px; }
+.footer-social-list { list-style: none; padding: 0; margin: 0; }
+.footer-social-list li { margin-bottom: 15px; }
+.footer-social-list a { color: #ffffff !important; text-decoration: none !important; font-size: 17px; display: flex; align-items: center; gap: 12px; transition: all 0.3s ease; }
+.footer-bottom { text-align: center; margin-top: 60px; padding-top: 25px; border-top: 1px solid #333; }
 
-.footer-grid {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
-  gap: 50px;
-  align-items: flex-start;
-}
-
-.footer-col h4 {
-  color: var(--gold);
-  font-family: serif;
-  font-size: 1.4rem;
-  margin-bottom: 25px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.footer-col p {
-  color: #bbb;
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-/* --- Critical Link Fixes --- */
-.footer-social-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-social-list li {
-  margin-bottom: 15px;
-}
-
-/* This targets the <a> tags to remove the blue color and enable clicking */
-.footer-social-list a {
-  color: #ffffff !important; /* Forces color to white, ignoring browser defaults */
-  text-decoration: none !important;
-  font-size: 17px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  transition: all 0.3s ease;
-  cursor: pointer !important; /* Ensures the hand icon appears */
-  position: relative;
-  z-index: 20; /* Brings the link to the very front */
-}
-
-/* Gold Hover Effect */
-.footer-social-list a:hover {
-  color: var(--gold) !important;
-  transform: translateX(8px);
-}
-
-.footer-bottom {
-  text-align: center;
-  margin-top: 60px;
-  padding-top: 25px;
-  border-top: 1px solid #333;
-}
-
-.footer-bottom p {
-  color: #666;
-  font-size: 14px;
-}
-
-/* Fix for Blue Links */
-.footer-social-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-social-list li {
-  margin-bottom: 15px;
-}
-
-.footer-social-list a {
-  text-decoration: none;
-  color: #ffffff; /* Forces links to be White */
-  font-size: 17px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  transition: all 0.3s ease;
-}
-
-.footer-social-list a .icon {
-  font-size: 1.2rem;
-}
-
-/* Hover Effect */
-.footer-social-list a:hover {
-  color: var(--gold); /* Changes to Gold on hover */
-  transform: translateX(8px); /* Subtle slide effect */
-}
-
-.footer-bottom {
-  text-align: center;
-  margin-top: 60px;
-  padding-top: 25px;
-  border-top: 1px solid #333;
-}
-
-.footer-bottom p {
-  color: #666;
-  font-size: 14px;
-}
-
-/* Responsive Footer */
-@media (max-width: 768px) {
-  .footer-grid {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-  .footer-social-list a {
-    justify-content: center;
-  }
-}
-
-/* --- Responsiveness --- */
+/* --- RESPONSIVENESS (992px) --- */
 @media (max-width: 992px) {
-  .side-by-side, .footer-grid, .contact-layout {
+  .nav-brand { justify-content: flex-start; padding-left: 15px; width: 90%; gap: 10px; }
+  .nav-brand img { height: 45px; }
+  .nav-brand h1 { font-size: 1.1rem; max-width: 60%; line-height: 1.2; text-align: left; }
+  
+  .hamburger { display: block; }
+  
+  .nav-links {
+    display: none;
     flex-direction: column;
-    grid-template-columns: 1fr;
+    background: var(--gold);
+    padding: 20px;
+    width: 100%;
+    border-radius: 0;
+    gap: 15px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
   }
+
+  .nav-links.mobile-open { display: flex; }
+  .nav-links a, .drop-trigger { font-size: 14px; }
+  .side-by-side { flex-direction: column; align-items: center; }
+  .text-area, .image-area { width: 100%; }
   .page-header h2 { font-size: 2.5rem; }
 }
-/* --- Dedicated Registration Submit Button --- */
-.submit-btn {
-  background-color: var(--maroon); /* Maroon Background */
-  color: var(--white);            /* White Text */
-  border: 2px solid var(--maroon);
-  padding: 18px 40px;             /* Large, professional size */
-  font-size: 18px;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  cursor: pointer;
-  width: 100%;                    /* Full width of the form */
-  transition: all 0.3s ease;      /* Smooth color change */
-  margin-top: 30px;
-  display: block;
-}
 
-.submit-btn:hover {
-  background-color: var(--gold);  /* Changes to Gold on hover */
-  border-color: var(--gold);
-  color: var(--dark);             /* Dark text for contrast against gold */
-}
-
-/* ... [Keep all your existing CSS above as is] ... */
-
-/* --- Navbar Registration Button Styling --- */
-.nav-reg-btn {
-  background-color: var(--maroon);
-  color: white !important;
-  padding: 8px 15px;
-  border-radius: 4px;
-  transition: 0.3s;
-}
-.nav-reg-btn:hover {
-  background-color: var(--dark);
-}
-
-/* --- MOBILE RESPONSIVENESS (Main Fixes) --- */
-
-@media (max-width: 992px) {
-  .navbar {
-    padding: 15px 10px;
-  }
-  
-  .nav-brand {
-    gap: 10px;
-    margin-bottom: 15px;
-  }
-
-  .nav-brand img {
-    height: 50px; /* Smaller logo for mobile */
-  }
-
-  .nav-brand h1 {
-    font-size: 1.4rem;
-    text-align: center;
-  }
-
-  .nav-links {
-    flex-wrap: wrap; /* Allows links to wrap to multiple lines */
-    justify-content: center;
-    gap: 15px;
-    padding: 15px 20px;
-    width: 90%;
-  }
-
-  .nav-links a, .drop-trigger {
-    font-size: 12px;
-  }
-}
-
+/* --- RESPONSIVENESS (768px) --- */
 @media (max-width: 768px) {
-  .container {
-    width: 90%;
-    padding: 40px 0;
-  }
-
-  /* Force all grids to 1 column */
-  .grid-2, .grid-3, .contact-layout {
-    grid-template-columns: 1fr !important;
-    gap: 15px;
-  }
-
-  /* Force side-by-side to stack */
-  .side-by-side {
-    flex-direction: column !important;
-    align-items: center;
-  }
-
-  .text-area, .image-area {
-    width: 100% !important;
-    padding: 0;
-  }
-
-  .image-area img {
-    margin-top: 20px;
-    padding-top: 0;
-  }
-
-  .page-header {
-    height: 250px;
-  }
-
-  .page-header h2 {
-    font-size: 2.2rem;
-  }
-
-  .form-card {
-    padding: 20px;
-  }
-
-  /* Fixes registration member boxes */
-  .member-form-box {
-    padding: 15px !important;
-  }
-
-  .captcha-box {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr !important;
-    text-align: center;
-    gap: 40px;
-  }
-
-  .footer-social-list a {
-    justify-content: center;
-  }
+  .container { width: 90%; padding: 40px 0; }
+  .grid-2, .grid-3, .contact-layout { grid-template-columns: 1fr !important; gap: 15px; }
+  .image-area img { margin-top: 20px; }
+  .page-header { height: 250px; }
+  .page-header h2 { font-size: 2.2rem; }
 }

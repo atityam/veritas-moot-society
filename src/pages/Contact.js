@@ -44,19 +44,23 @@ const Contact = () => {
       <div className="container">
         <div className="contact-layout">
           <div className="contact-form">
-            <span style={{color: '#D4AF37', fontWeight: 'bold'}}>GET IN TOUCH WITH US</span>
-            <h2 style={{marginTop: '5px'}}>LEAVE A MESSAGE</h2>
+            <span style={{color: '#D4AF37', fontWeight: 'bold', display: 'block', marginBottom: '10px'}}>GET IN TOUCH WITH US</span>
+            <h2 style={{marginTop: '0', marginBottom: '30px'}}>LEAVE A MESSAGE</h2>
+            
             <form className="grid-2" onSubmit={handleSubmit}>
               <input type="text" name="user_name" placeholder="Your Name" required />
               <input type="email" name="user_email" placeholder="Email Address" required />
               <input type="text" name="user_phone" placeholder="Phone Number" required />
               <input type="text" name="user_subject" placeholder="Subject" required />
-              <textarea name="user_message" placeholder="Write message" className="full-width" required></textarea>
-              <button type="submit" className="send-btn" disabled={loading}>
-                {loading ? "SENDING..." : "SEND A MESSAGE"}
-              </button>
+              <textarea name="user_message" placeholder="Write message" rows="5" className="full-width" required></textarea>
+              <div className="full-width">
+                <button type="submit" className="send-btn" disabled={loading} style={{width: '100%'}}>
+                  {loading ? "SENDING..." : "SEND A MESSAGE"}
+                </button>
+              </div>
             </form>
           </div>
+          
           <div className="contact-info-card">
             <h3>Office Address</h3>
             <p>📍 CDGI Campus, Khandwa Road, Indore (452020)</p>
