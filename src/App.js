@@ -9,11 +9,13 @@ import Registration from './pages/Registration';
 import Winners from './pages/Winners';
 import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
+import ScrollToTop from "./ScrollToTop";
 import './App.css';
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="app-container">
         <Navbar />
         <main className="content">
