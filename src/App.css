@@ -323,3 +323,21 @@ input, textarea { padding: 15px; border: 1px solid #ddd; background: #f9f9f9; fo
 
   .page-header h2 { font-size: 2rem; }
 }
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.gallery-card {
+  border: 5px solid #fff;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.gallery-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-5px);
+}
