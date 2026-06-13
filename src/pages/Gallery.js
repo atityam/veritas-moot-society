@@ -50,7 +50,6 @@ const Gallery = () => {
   "IMG_0720.JPG",
   "IMG_0721.JPG",
   "IMG_0726.JPG",
-  "IMG_9265.DNG",
   "IMG_9268.DNG",
   "IMG_9269.DNG",
   "IMG_9270.DNG",
@@ -58,11 +57,14 @@ const Gallery = () => {
   "IMG_9272.DNG",
   "IMG_9274.DNG",
   "IMG_9283.DNG",
-  "IMG_9363.DNG",
-  "IMG_9364.DNG",
+  "IMG_9265.JPG",
+  "IMG_9363.JPG",
+  "IMG_9364.JPG",
+  "IMG_9370.JPG",
   "IMG_9366.DNG",
   "IMG_9367.DNG",
-  "IMG_9370.DNG",
+  
+  
 
   "DSC_2956.JPG", "IMG-20260123-WA0168.jpg", "IMG-20260123-WA0167.jpg",
   "IMG-20260123-WA0166.jpg", "IMG-20260123-WA0165.jpg", "IMG-20260123-WA0162.jpg",
