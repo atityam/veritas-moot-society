@@ -18,7 +18,7 @@ const Resources = () => {
     },
     {
       title: "National Moot Court Competition - 2026",
-      registrationClosed: false,
+      registrationClosed: true,
       docs: [
         { name: "Brochure", link: "/assets/docs/moot-court-brochure.pdf" },
         { name: "The Rule Book", link: "/assets/docs/moot-court-rules.pdf" },
